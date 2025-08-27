@@ -1,0 +1,679 @@
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --accent: #0f62fe;
+    --border: #e5e7eb;
+    --row: #f9fafb;
+    --pad: 12px;
+    --maxw: min(1100px, 92vw);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --nav-guard: 56px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    font-family:
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Arial,
+        sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+#app {
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+}
+.track {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    transition: transform 0.45s var(--ease);
+    touch-action: pan-y;
+}
+.dragging .track {
+    transition: none;
+}
+
+/* Slides: fixed header + scrollable body */
+.slide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+}
+.slide.noheader {
+    grid-template-rows: 1fr;
+}
+.slide__header {
+    padding: var(--pad);
+    text-align: center;
+}
+.slide__header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+/* Remove top padding so sticky elements pin to the visual top */
+.slide__body {
+    min-height: 0;
+    overflow: auto;
+    padding: 0 var(--pad) var(--pad);
+}
+.lead {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: black;
+}
+
+/* Center non-table content */
+.slide--text:not([data-id="demo-1"]) .slide__body {
+    font-weight: 400;
+    font-size: 1em;
+    display: grid;
+    place-items: center;
+}
+.slide--text:not([data-id="demo-1"]) .container {
+    height: 80%;
+    width: 70%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+@media (max-width: 720px) {
+    .slide--text:not([data-id="demo-1"]) .container {
+        width: 90%;
+    }
+}
+
+/* Demo 1 only */
+/*.slide--text[data-id="demo-1"] .slide__body {*/
+/* your overrides here */
+/* e.g., padding: 0; place-items: start; */
+/*}*/
+
+/* Portrait slide */
+.slide--portrait {
+    grid-template-rows: 1fr;
+}
+.slide--portrait .slide__body {
+    padding: 0;
+}
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-position: center bottom;
+    background-size: cover;
+}
+/* no overlay for a minimal look */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+.hero__copy {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40%;
+    width: 33vw;
+    max-width: 36rem;
+    text-align: center;
+    color: var(--text);
+    line-height: 1.5;
+    background: none;
+    padding: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.hero__copy h3 {
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+@media (max-width: 800px) {
+    .hero__copy {
+        width: calc(100vw - 2 * var(--pad));
+        top: 24%;
+    }
+}
+
+/* Constrain content width + margins inside scroll area */
+.container {
+    width: var(--maxw);
+    margin: 0 auto 24px auto;
+}
+
+.photo-card img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.photo-caption {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 6px;
+    text-align: center;
+}
+
+/* Navigation buttons */
+.nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--text);
+    z-index: 10;
+    border-radius: 8px;
+}
+.nav:hover {
+    border-color: var(--border);
+    background: #fff;
+}
+.nav--prev {
+    left: 8px;
+}
+.nav--next {
+    right: 8px;
+}
+.nav[disabled] {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Table + tools */
+.slide--table .container {
+    margin: 12px auto 24px;
+}
+.tools {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    z-index: 2;
+    box-shadow: 0 1px 0 var(--border);
+}
+.input,
+.checkbox {
+    font: inherit;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+}
+.checkbox {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+}
+.label {
+    font-size: 0.95rem;
+    color: var(--muted);
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.9rem;
+}
+.chip[aria-pressed="true"] {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+}
+
+table {
+    width: 100%;
+    align-content: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+/* Sticky header offset is computed in JS as tools height + body padding top */
+thead th {
+    position: sticky;
+    top: var(--sticky-offset, 48px);
+    background: #fff;
+    text-align: left;
+    font-weight: 600;
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: 0 1px 0 var(--border);
+}
+tbody td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+tbody tr:hover {
+    background: var(--row);
+}
+th .sort {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-left: 6px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.btn:hover {
+    border-color: #d1d5db;
+}
+
+@media (max-width: 720px) {
+    thead {
+        display: none;
+    }
+    table,
+    tbody,
+    tr,
+    td {
+        display: block;
+        width: 100%;
+    }
+    tbody tr {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    tbody td {
+        border: 0;
+        padding: 6px 0;
+    }
+    tbody td::before {
+        content: attr(data-label) ": ";
+        font-weight: 600;
+        color: var(--muted);
+    }
+}
+
+/* Demo 1 — full-bleed thirds: A | B | C (desktop), A / B / C (mobile) */
+.demo1-wrap {
+    /* make the demo span the full viewport inside the scroller */
+    width: 100vw;
+    height: 100dvh;
+    /* break out of centered container & body padding to touch edges */
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    /* cancel the slide__body bottom padding so we’re flush at the bottom */
+    margin-bottom: calc(-1 * var(--pad));
+    display: grid;
+}
+
+.demo1-grid {
+    display: grid;
+    grid-template-areas: "a b c";
+    grid-template-columns: 1fr minmax(320px, 480px) 1fr;
+    height: 100%;
+    gap: clamp(12px, 2vw, 20px);
+    align-items: stretch;
+}
+
+.demo1-pane {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 0; /* allow grid to control height */
+}
+.demo1-pane--a {
+    grid-area: a;
+    background-image: url("images/code.png");
+}
+.demo1-pane--b {
+    grid-area: b;
+    display: grid;
+    place-items: center;
+    background: transparent;
+}
+.demo1-pane--c {
+    grid-area: c;
+    background-image: url("images/sheet.png");
+}
+
+.demo1-copy {
+    max-width: 42ch;
+    text-align: left;
+}
+
+@media (max-width: 900px) {
+    .demo1-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "a"
+            "b"
+            "c";
+        grid-template-rows: 1fr 1fr 1fr; /* equal top/middle/bottom thirds */
+    }
+}
+
+/* --- Demo 2 (D3 scatter) --- */
+.demo2-root {
+    width: var(--maxw);
+    height: clamp(360px, 60vh, 560px);
+    margin: 0 auto;
+    position: relative; /* tooltip positioning */
+    padding-inline: var(--nav-guard); /* keep clear of nav arrows */
+}
+
+.demo2-root svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.demo2-legend {
+    font-size: 0.9rem;
+    fill: var(--text);
+}
+
+.demo2-dot {
+    stroke: #fff;
+    stroke-width: 0.8px;
+    opacity: 0.95;
+}
+
+.demo2-dot:focus {
+    outline: 2px solid #0000; /* remove default */
+}
+
+.demo2-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    transform: translate(-50%, -120%);
+    white-space: nowrap;
+    z-index: 2;
+    display: none;
+}
+
+.axis-title {
+    font-size: 0.9rem;
+    fill: var(--muted);
+}
+
+/* Demo 2 layout: top copy, bottom chart */
+.slide--demo2 .slide__body {
+    display: block; /* overrides the centering grid used by .slide--text */
+}
+
+.demo2 {
+    display: grid;
+    grid-template-rows: 0.7fr 1fr; /* top half copy, bottom half chart */
+    height: 100%;
+    min-height: 100%;
+}
+
+.demo2-copy {
+    display: grid;
+    place-items: center; /* center the copy within the top half */
+    padding-inline: var(--pad);
+    text-align: left; /* like Demo 1 */
+}
+
+.demo2-copy > div {
+    max-width: 50ch; /* like Demo 1’s readable width */
+    margin: 0 auto;
+}
+
+.demo2-root {
+    width: var(--maxw);
+    height: clamp(360px, 60vh, 560px);
+    margin: 0 auto;
+    position: relative; /* tooltip positioning */
+    padding-inline: var(--nav-guard); /* keep clear of nav arrows */
+}
+
+.demo2-chart {
+    min-height: 0;
+    height: 100%;
+}
+
+/* --- Tech pills --- */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; /* space between pills */
+}
+
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px; /* oval */
+    border: 1px solid var(--border);
+    line-height: 1;
+    font-size: 0.9rem;
+    white-space: nowrap; /* keep each label intact */
+}
+
+/* Work table: image thumbnail column */
+thead th:first-child {
+    width: 150px;
+} /* narrow blank header */
+tbody td.col-img {
+    width: 150px;
+}
+
+.thumb {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px; /* soft rounded thumb */
+    display: block;
+    background: #f3f4f6; /* nice fallback bg while loading */
+}
+
+/* Mobile stack: keep the image cell clean, no label prefix */
+@media (max-width: 720px) {
+    tbody td.col-img {
+        padding: 8px 0;
+    }
+    tbody td.col-img::before {
+        content: "";
+    }
+}
+/* Bold the project titles in the work table */
+.slide--table td[data-label="Title"] {
+    font-weight: 700;
+}
+
+/* Demo 1: no vertical scroll, optional tighter bottom padding */
+#demo-1 .slide__body {
+    overflow: hidden; /* or: overflow: clip; */
+    padding-bottom: 0; /* optional */
+}
+
+/* ---- Pitch slide ---- */
+.pitch { max-width: min(1000px, 92vw); text-align: left;}
+.pitch h3 { margin: 0 0 .75rem; font-size: 1.6rem; text-align: center; }
+
+.pitch-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px 20px;
+  margin-top: 12px;
+}
+
+.pitch-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #fff;
+}
+
+.pitch-item h4 {
+  margin: 0 0 .35rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pitch-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 640px){
+  .pitch { max-width: 92vw; }
+}
+
+/* Pitch card hover/focus styles */
+.pitch-item{
+  background: #fff;
+  border: 1px solid var(--border);
+  transition: background-color .18s var(--ease),
+              border-color .18s var(--ease),
+              box-shadow .18s var(--ease),
+              color .18s var(--ease);
+}
+
+.pitch-item:hover,
+.pitch-item:focus-within{
+  background: #f5f8ff;          /* subtle tint on hover */
+  border-color: #c7d2fe;         /* soft accent border */
+  box-shadow: 0 1px 0 rgba(0,0,0,.03),
+              0 4px 12px rgba(15,98,254,.08);
+}
+
+/* Optional: nudge text color on hover for emphasis */
+.pitch-item:hover h4,
+.pitch-item:focus-within h4{
+  color: var(--accent);
+}
+.pitch-item p{
+  color: var(--muted);
+  transition: color .18s var(--ease);
+}
+.pitch-item:hover p,
+.pitch-item:focus-within p{
+  color: var(--text);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .pitch-item, .pitch-item *{ transition: none; }
+}
+
+/* --- Outro --- */
+.outro{
+  text-align: center;
+}
+.outro h3{
+  margin: 0 0 .5rem;
+  font-size: 1.6rem;
+}
+.outro .lead{
+  max-width: 60ch;
+  margin: 0 auto 4rem;
+}
+
+.outro-links,
+.outro-social{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.outro-link{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.outro-pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color .18s var(--ease),
+              border-color .18s var(--ease),
+              box-shadow .18s var(--ease);
+}
+.outro-pill:hover,
+.outro-pill:focus-visible{
+  background: #f5f8ff;
+  border-color: #c7d2fe;
+  box-shadow: 0 1px 0 rgba(0,0,0,.03), 0 4px 12px rgba(15,98,254,.08);
+}
+
+@media (max-width: 720px){
+  .outro .lead{ margin-bottom: .75rem; }
+}
+
+.slide--pitch .slide__body{ padding-bottom:12vh; }
+
+
