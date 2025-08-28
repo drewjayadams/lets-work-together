@@ -112,8 +112,6 @@ const SLIDES = [
         <p style="font-style:italic;"><br>Possible projects: quizes, lookup tools, reference guides</p>
       </article>
       
-
-      
       </div>      
       <br><p style="text-align:center;"><b>
         Here are the subject areas I'm drawn to. I have sourcing, reporting and published work in all of these areas. 
@@ -170,7 +168,7 @@ const SLIDES = [
         Find me on
         <a href="https://x.com/drewjayadams" target="_blank" rel="noopener">X</a> ·
         <a href="https://www.linkedin.com/in/andrew-adams-2897b914a/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://bsky.app/profile/drewjayadams.bsky.social" target="_blank" rel="noopener">Bluesky</a> ·
+        <a href="https://bsky.app/profile/drewjayadams.bsky.social" target="_blank" rel="noopener">Bluesky</a> 
       </p>
     </div>` 
   },
@@ -792,6 +790,7 @@ window.addEventListener('hashchange', ()=>{
 });
 
 init();
+
 
 
 
