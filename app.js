@@ -62,7 +62,7 @@ const SLIDES = [
   /*{ id:'welcome', type:'text', title:'Welcome', html:`<p class="lead">Minimalist swipeable portfolio demo. Swipe or use arrows.</p>` },*/
   { id:'portrait', type:'portrait', title:'', image:'images/selfp.jpg', copy:`
       <h3>Hi. I'm Andrew.</h3>
-      <p>I’m a data journalist and developer focused on turning messy civic data into stories that help people. I build approachable interactives, fast pipelines, and clean visuals, then I work with reporters and editors to ship them. My background blends reporting, visual art, product thinking, and research — so I love projects that cross boundaries. Lately I’ve been exploring natural-language workflows for document sets and custom visual systems for newsroom- and project-wide deployment. Off the clock: coffee, bikes, photograpahy. If you’re hiring for someone who can report, prototype, and push to prod, let’s talk.<br><br>Swipe or use the arrow buttons to navigate.</p>` },
+      <p>I’m a data journalist and developer focused on turning messy civic data into stories that help people. I build approachable interactives, fast pipelines, and clean visuals, then I work with reporters and editors to ship them. My background blends reporting, visual art, product thinking, and research — so I love projects that cross boundaries. Lately I’ve been exploring natural-language workflows for document sets and custom visual systems for newsroom- and project-wide deployment. Off the clock: music, bikes, photograpahy. If you’re hiring for someone who can report, prototype, and push to prod, let’s talk.<br><br>Swipe or use the arrow buttons to navigate.</p>` },
   { id:'experience', type:'text', title:'', html:`
     <div class="container">
       <p class="lead">
@@ -814,3 +814,4 @@ window.addEventListener('hashchange', ()=>{
 });
 
 init();
+
