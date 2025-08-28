@@ -20,4 +20,4 @@ A lightweight, swipe-driven portfolio to showcase projects, small demos, and a p
 - Swipe down on individual 'pages'
 - Additional formats
 
-[Email me](mailto:drew.jay.adams@gmail.com) if you want to suggest something. 
+Email me (drew.jay.adams at gmail dot com) if you want to suggest something. 
