@@ -33,7 +33,7 @@ const SLIDES = [
             <div class="demo1-copy">
               <h3>I find, scrape and clean data.</h3>
               <p>
-              As a quick demo, here's an example. Here's the <a href="https://github.com/drewjayadams/bgascrape/blob/main/README.md">real code</a> I used to scrape every investigation that Illinois Answers Project has published.
+              As a quick demo, here's an example. Here's the <a href="https://github.com/drewjayadams/bgascrape/blob/main/bga_scrape.py">real code</a> I used to scrape every investigation that Illinois Answers Project has published.
               <br><br> And here's the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjjmY93YCSaPC0wtztFka3dTLKvyRRm1IIsI4w_NqBifrB5CbMd3kp2uEVkkS4XzpR_KmzTv7k4S3/pubhtml">results</a> for the past five years. 
               <br><br> I've created, cleaned and used datasets pulled from FOIA requests, lobbying and ethics disclosures, news archives, government websites and more. 
               </p>
@@ -790,6 +790,7 @@ window.addEventListener('hashchange', ()=>{
 });
 
 init();
+
 
 
 
