@@ -11,7 +11,7 @@ const SLIDES = [
       </p>
       <p> My <a href="https://drive.google.com/file/d/1v1II94Y--juXfuYfMBY5ARWN5m2NdRgi/view">resume</a>, has the recent milestones of my job history, but here's the stuff you actually need to know about me: 
         <ul>
-          <li style="margin-bottom: 10px;"><b>9+ years in the industry, more than 5 years full time in newsrooms,</b> mostly focused on Illinois government and politics
+          <li style="margin-bottom: 10px;"><b>9+ years in the industry, more than 5+ years full time,</b> mostly focused on Illinois government and politics
           <li style="margin-bottom: 10px;">Coordinated <b>data, graphics and guides</b> for statewide, nonprofit newsroom
           <li style="margin-bottom: 10px;">Built a <b>national data journalism beat</b> for industry magazine 
           <li style="margin-bottom: 10px;"><b>Taught <a href="https://github.com/drewjayadams/how-to-data">seminars and workshops</a> on data journalism</b> at University of Illinois Springfield and Southern Illinois University
@@ -790,6 +790,7 @@ window.addEventListener('hashchange', ()=>{
 });
 
 init();
+
 
 
 
