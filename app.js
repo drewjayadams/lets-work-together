@@ -62,7 +62,7 @@ const SLIDES = [
   /*{ id:'welcome', type:'text', title:'Welcome', html:`<p class="lead">Minimalist swipeable portfolio demo. Swipe or use arrows.</p>` },*/
   { id:'portrait', type:'portrait', title:'', image:'images/selfp.jpg', copy:`
       <h3>Hi. I'm Andrew.</h3>
-      <p>I’m a data journalist and developer focused on turning messy civic data into stories people can feel. I build approachable interactives, fast pipelines, and clean visuals; then I work with reporters and editors to ship them. My background blends reporting, product thinking, and engineering—so I love projects that cross boundaries: election tech, transparency, accountability, local policy. Lately I’ve been exploring natural-language workflows for document sets and custom visual systems for legislative votes. Off the clock: coffee, bikes, camera. If you’re hiring for someone who can sketch, prototype, and push to prod, let’s talk.<br><br>Swipe or use the arrow buttons to navigate.</p>` },
+      <p>I’m a data journalist and developer focused on turning messy civic data into stories that help people. I build approachable interactives, fast pipelines, and clean visuals, then I work with reporters and editors to ship them. My background blends reporting, visual design, product thinking, and research — so I love projects that cross boundaries. Lately I’ve been exploring natural-language workflows for document sets and custom visual systems for newsroom- and project-wide deployment. Off the clock: coffee, bikes, photogrpahy. If you’re hiring for someone who can report, prototype, and push to prod, let’s talk.<br><br>Swipe or use the arrow buttons to navigate.</p>` },
   { id:'experience', type:'text', title:'', html:`
     <div class="container">
       <p class="lead">
@@ -73,7 +73,7 @@ const SLIDES = [
           <li style="margin-bottom: 10px;"><b>10 years in the industry, more than 5 years full time,</b> mostly focused on Illinois government and politics
           <li style="margin-bottom: 10px;">Coordinated <b>data, graphics and guides</b> for statewide, nonprofit newsroom
           <li style="margin-bottom: 10px;">Built a <b>national data journalism beat</b> for industry magazine 
-          <li style="margin-bottom: 10px;"><b>Taught seminars and workshops on data journalism</b> at University of Illinois Springfield and Southern Illinois University
+          <li style="margin-bottom: 10px;"><b>Taught <a href="https://github.com/drewjayadams/how-to-data">seminars and workshops</a> on data journalism</b> at University of Illinois Springfield and Southern Illinois University
           <li style="margin-bottom: 10px;">Handled research and was the primary author on a <b>newsroom-wide, award-winning investigation</b> into PPP loans in 2020
           <li style="margin-bottom: 10px;">Led research on academic projects dealing with <b>gun violence in downstate Illinois</b> and sentiment in popular press toward <b>climate change-related technology</b>  
         </ul>
@@ -92,8 +92,8 @@ const SLIDES = [
             <div class="demo1-copy">
               <h3>I find, scrape and clean data.</h3>
               <p>
-              As a quick demo, here's an example. On the left is the <a href="https://winners.webbyawards.com/2025/websites-and-mobile-sites/general-desktop-mobile-sites/news-politics/323480/the-dispatch">real code</a> I used to scrape every investigation that Illinois Answers Project has published.
-              <br><br> On the right are the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjjmY93YCSaPC0wtztFka3dTLKvyRRm1IIsI4w_NqBifrB5CbMd3kp2uEVkkS4XzpR_KmzTv7k4S3/pubhtml">results</a> for the past five years. 
+              As a quick demo, here's an example. Here's the <a href="https://github.com/drewjayadams/bgascrape/blob/main/README.md">real code</a> I used to scrape every investigation that Illinois Answers Project has published.
+              <br><br> And here's the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjjmY93YCSaPC0wtztFka3dTLKvyRRm1IIsI4w_NqBifrB5CbMd3kp2uEVkkS4XzpR_KmzTv7k4S3/pubhtml">results</a> for the past five years. 
               <br><br> I've created, cleaned and used datasets pulled from FOIA requests, lobbying and ethics disclosures, news archives, government websites and more. 
               </p>
             </div>
@@ -160,12 +160,6 @@ const SLIDES = [
       </article>
       
       <article class="pitch-item" role="listitem">
-        <h4>Internal standards and practice </h4>
-        <p>Data journalists often work like staff photographers on stories and I'm intersted in how to integrate data lead-generation earleir into traditional reporting projects for collaborations.</p>
-        <p style="font-style:italic;"><br>Possible projects: internal tools, offering pitches for other people</p>
-      </article>
-      
-      <article class="pitch-item" role="listitem">
         <h4>Internal standards and practices </h4>
         <p>Data journalists often work like staff photographers on stories and I'm intersted in how to integrate data lead-generation earleir into traditional reporting projects for collaborations.</p>
         <p style="font-style:italic;"><br>Possible projects: internal tools, offering pitches for other people</p>
@@ -173,7 +167,7 @@ const SLIDES = [
       
       <article class="pitch-item" role="listitem">
         <h4>News app development</h4>
-        <p>I've begun to work on "Secon-person" news, where individuals can learn things about their own situation through responsive web design and storytelling.</p>
+        <p>I've begun to work on "second-person" news, where individuals can learn things about their own situation through responsive web design and storytelling.</p>
         <p style="font-style:italic;"><br>Possible projects: quizes, lookup tools, reference guides</p>
       </article>
       
@@ -216,7 +210,7 @@ const SLIDES = [
 
       <article class="pitch-item" role="listitem">
         <h4>Surveillance technology</h4>
-        <p>The state regularly faces data breaches, but it often sells and buys personal data of Illinois citizens with little oversight. Already have some concerning data from ILSOS.</p>
+        <p>The state regularly faces data breaches, and it often sells and buys personal data of Illinois citizens with little oversight. Already have some concerning data from ILSOS.</p>
         <p style="font-style:italic;"><br>Possible projects: tracking citizen data through sales, identifying data broker state vendors </p>
       </article>
     </div>
@@ -236,7 +230,6 @@ const SLIDES = [
         <a href="https://x.com/drewjayadams" target="_blank" rel="noopener">X</a> ·
         <a href="https://www.linkedin.com/in/andrew-adams-2897b914a/" target="_blank" rel="noopener">LinkedIn</a> ·
         <a href="https://bsky.app/profile/drewjayadams.bsky.social" target="_blank" rel="noopener">Bluesky</a> ·
-        <a href="https://www.instagram.com/drewjayadams/" target="_blank" rel="noopener">Instagram</a>.
       </p>
     </div>` 
   },
@@ -352,7 +345,7 @@ function buildTableUI(){
       journalist. I thrive on deadlines and pride myself on filing clean copy. I've
       published dozens of major projects and worked on hundreds of stories. I've
       collected a few recent ones below in a searchable, filterable table.
-    </p>
+    </p><br><br>
   `;
   wrap.appendChild(intro);           // ⟵ append BEFORE tools/table
 
