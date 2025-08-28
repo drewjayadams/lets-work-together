@@ -62,7 +62,7 @@ const SLIDES = [
   /*{ id:'welcome', type:'text', title:'Welcome', html:`<p class="lead">Minimalist swipeable portfolio demo. Swipe or use arrows.</p>` },*/
   { id:'portrait', type:'portrait', title:'', image:'images/selfp.jpg', copy:`
       <h3>Hi. I'm Andrew.</h3>
-      <p>I’m a data journalist and developer focused on turning messy civic data into stories that help people. I build approachable interactives, fast pipelines, and clean visuals, then I work with reporters and editors to ship them. My background blends reporting, visual design, product thinking, and research — so I love projects that cross boundaries. Lately I’ve been exploring natural-language workflows for document sets and custom visual systems for newsroom- and project-wide deployment. Off the clock: coffee, bikes, photogrpahy. If you’re hiring for someone who can report, prototype, and push to prod, let’s talk.<br><br>Swipe or use the arrow buttons to navigate.</p>` },
+      <p>I’m a data journalist and developer focused on turning messy civic data into stories that help people. I build approachable interactives, fast pipelines, and clean visuals, then I work with reporters and editors to ship them. My background blends reporting, visual art, product thinking, and research — so I love projects that cross boundaries. Lately I’ve been exploring natural-language workflows for document sets and custom visual systems for newsroom- and project-wide deployment. Off the clock: coffee, bikes, photograpahy. If you’re hiring for someone who can report, prototype, and push to prod, let’s talk.<br><br>Swipe or use the arrow buttons to navigate.</p>` },
   { id:'experience', type:'text', title:'', html:`
     <div class="container">
       <p class="lead">
@@ -143,20 +143,20 @@ const SLIDES = [
       
       <article class="pitch-item" role="listitem">
         <h4>Internal and external tool building</h4>
-        <p>I want to create a suite of tools and standards for journalists in Illinois that can benefit them</p>
+        <p>Newsrooms often need tools to sort and find data, and publishing them can elevate the mission of any public service-oriented newsroom</p>
         <p style="font-style:italic;"><br>Possible projects: data guides, legislative bill and vote tracking, centralized platform for IL datasets, database reporting</p>
       </article>
       
       <article class="pitch-item" role="listitem">
         <h4>Political modeling</h4>
-        <p>Statistics and data analytics are powerful tools that are rarely applied in Illinois’ business and government beats. </p>
-        <p style="font-style:italic;"><br>Possible projects: assisting traditional reporters with stories, cleaning data and providing early insights </p>
+        <p>Statistics and data analytics are powerful tools that can identify trends. </p>
+        <p style="font-style:italic;"><br>Possible projects: political ideology analysis, cleaning data and providing early insights </p>
       </article>
       
       <article class="pitch-item" role="listitem">
         <h4>Community building </h4>
         <p>What would it look like for everyone in the city to send photos of a common code violation? Could journalism learn from guerilla marketing? Think of the restraint chair booklets.</p>
-        <p style="font-style:italic;"><br>Possible projects: custom subsites and forums, real world publishing </p>
+        <p style="font-style:italic;"><br>Possible projects: custom Illinois Answers subsites and forums, physically publishing data</p>
       </article>
       
       <article class="pitch-item" role="listitem">
@@ -180,13 +180,13 @@ const SLIDES = [
       <div class="pitch-list" role="list">
       <article class="pitch-item" role="listitem">
         <h4>Lobbying expenditures</h4>
-        <p>Lobbying disclosures, while imperfect, reveal important trends. Preliminary analysis has promising results on </p>
+        <p>Lobbying disclosures, while imperfect, reveal important trends. Preliminary analysis has promising results to identify most well-connected lobbying groups.</p>
         <p style="font-style:italic;"><br>Possible projects: network of lobbying contracts, database of non-compliant lobbyists </p>
       </article>
 
       <article class="pitch-item" role="listitem">
         <h4>Board & commission vacancies</h4>
-        <p>Board seats are often left strategically empty to stop policy from being implemented. Many seats come with high salaries.</p>
+        <p>Board seats are often left strategically empty to stop policy from being implemented. Many seats come with high salaries. Already have draft database.</p>
         <p style="font-style:italic;"><br>Possible projects: dashboard of vacant positions, network analysis of appointees and donors </p>
       </article>
 
@@ -204,7 +204,7 @@ const SLIDES = [
 
       <article class="pitch-item" role="listitem">
         <h4>Clean energy funding</h4>
-        <p>State-backed clean energy projects often fold after their “clean energy credits” are sold and used in marketing materials. </p>
+        <p>State-backed clean energy projects often fold after their “clean energy credits” are sold and used in marketing materials, despite their effect being nullified. </p>
         <p style="font-style:italic;"><br>Possible projects: narrative reporting built on data from grid operators </p>
       </article>
 
