@@ -143,8 +143,8 @@ const SLIDES = [
       
       <article class="pitch-item" role="listitem">
         <h4>Internal and external tool building</h4>
-        <p>Newsrooms often need tools to sort and find data, and publishing them can elevate the mission of any public service-oriented newsroom</p>
-        <p style="font-style:italic;"><br>Possible projects: data guides, legislative bill and vote tracking, centralized platform for IL datasets, database reporting</p>
+        <p>Newsrooms often need tools to sort and find data, and publishing them can elevate the mission of any public service-oriented newsroom.</p>
+        <p style="font-style:italic;"><br>Possible projects: data guides, legislative bill and vote tracking, centralized platform for IL datasets, campaign finance analysis</p>
       </article>
       
       <article class="pitch-item" role="listitem">
@@ -814,4 +814,5 @@ window.addEventListener('hashchange', ()=>{
 });
 
 init();
+
 
