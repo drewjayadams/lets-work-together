@@ -1,5 +1,4 @@
-# Write a README.md file for the user's project
-content = """# Swipeable Portfolio
+# Swipeable Portfolio
 
 A lightweight, swipe-driven portfolio to showcase projects, small demos, and a pitch—built with plain **HTML/CSS/JS**. Slides move horizontally with drag/swipe, arrow keys, or on‑screen buttons.
 
