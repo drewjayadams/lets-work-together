@@ -12,14 +12,14 @@
     --nav-guard: 56px;
 }
 
-/* Base link */
+/* links */
 a {
   color: darkorange;
   position: relative;
   display: inline-block;
   text-decoration: none;
 
-  /* the animated underline */
+  /* animated underline */
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: 0 100%;      /* left, bottom */
@@ -98,7 +98,6 @@ a {
     font-size: 1.6rem;
     font-weight: 600;
 }
-/* Remove top padding so sticky elements pin to the visual top */
 .slide__body {
     min-height: 0;
     overflow: auto;
@@ -110,7 +109,6 @@ a {
     color: black;
 }
 
-/* Center non-table content */
 .slide--text:not([data-id="demo-1"]) .slide__body {
     font-weight: 400;
     font-size: 1em;
@@ -150,7 +148,6 @@ a {
     background-position: center bottom;
     background-size: cover;
 }
-/* no overlay for a minimal look */
 .hero::after {
     content: "";
     position: absolute;
@@ -184,7 +181,6 @@ a {
     }
 }
 
-/* Constrain content width + margins inside scroll area */
 .container {
     width: var(--maxw);
     margin: 0 auto 24px auto;
@@ -299,7 +295,6 @@ table {
     border-collapse: collapse;
     table-layout: fixed;
 }
-/* Sticky header offset is computed in JS as tools height + body padding top */
 thead th {
     position: sticky;
     top: var(--sticky-offset, 48px);
@@ -369,15 +364,12 @@ th .sort {
     }
 }
 
-/* Demo 1 — full-bleed thirds: A | B | C (desktop), A / B / C (mobile) */
+/* Demo 1 */
 .demo1-wrap {
-    /* make the demo span the full viewport inside the scroller */
     width: 100vw;
     height: 100dvh;
-    /* break out of centered container & body padding to touch edges */
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    /* cancel the slide__body bottom padding so we’re flush at the bottom */
     margin-bottom: calc(-1 * var(--pad));
     display: grid;
 }
@@ -424,7 +416,7 @@ th .sort {
             "a"
             "b"
             "c";
-        grid-template-rows: 1fr 1fr 1fr; /* equal top/middle/bottom thirds */
+        grid-template-rows: 1fr 1fr 1fr;
     }
 }
 
@@ -434,7 +426,7 @@ th .sort {
     height: clamp(360px, 60vh, 560px);
     margin: 0 auto;
     position: relative; /* tooltip positioning */
-    padding-inline: var(--nav-guard); /* keep clear of nav arrows */
+    padding-inline: var(--nav-guard); 
 }
 
 .demo2-root svg {
@@ -479,27 +471,26 @@ th .sort {
     fill: var(--muted);
 }
 
-/* Demo 2 layout: top copy, bottom chart */
 .slide--demo2 .slide__body {
-    display: block; /* overrides the centering grid used by .slide--text */
+    display: block;
 }
 
 .demo2 {
     display: grid;
-    grid-template-rows: 0.7fr 1fr; /* top half copy, bottom half chart */
+    grid-template-rows: 0.7fr 1fr; 
     height: 100%;
     min-height: 100%;
 }
 
 .demo2-copy {
     display: grid;
-    place-items: center; /* center the copy within the top half */
+    place-items: center; 
     padding-inline: var(--pad);
-    text-align: left; /* like Demo 1 */
+    text-align: left;
 }
 
 .demo2-copy > div {
-    max-width: 50ch; /* like Demo 1’s readable width */
+    max-width: 50ch; 
     margin: 0 auto;
 }
 
@@ -507,8 +498,8 @@ th .sort {
     width: var(--maxw);
     height: clamp(360px, 60vh, 560px);
     margin: 0 auto;
-    position: relative; /* tooltip positioning */
-    padding-inline: var(--nav-guard); /* keep clear of nav arrows */
+    position: relative; 
+    padding-inline: var(--nav-guard); 
 }
 
 .demo2-chart {
@@ -516,28 +507,26 @@ th .sort {
     height: 100%;
 }
 
-/* --- Tech pills --- */
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px; /* space between pills */
+    gap: 6px; 
 }
 
 .tech-pill {
     display: inline-flex;
     align-items: center;
     padding: 4px 10px;
-    border-radius: 999px; /* oval */
+    border-radius: 999px; 
     border: 1px solid var(--border);
     line-height: 1;
     font-size: 0.9rem;
-    white-space: nowrap; /* keep each label intact */
+    white-space: nowrap; 
 }
 
-/* Work table: image thumbnail column */
 thead th:first-child {
     width: 150px;
-} /* narrow blank header */
+}
 tbody td.col-img {
     width: 150px;
 }
@@ -551,7 +540,6 @@ tbody td.col-img {
     background: #f3f4f6; /* nice fallback bg while loading */
 }
 
-/* Mobile stack: keep the image cell clean, no label prefix */
 @media (max-width: 720px) {
     tbody td.col-img {
         padding: 8px 0;
@@ -560,18 +548,15 @@ tbody td.col-img {
         content: "";
     }
 }
-/* Bold the project titles in the work table */
 .slide--table td[data-label="Title"] {
     font-weight: 700;
 }
 
-/* Demo 1: no vertical scroll, optional tighter bottom padding */
 #demo-1 .slide__body {
     overflow: hidden; /* or: overflow: clip; */
     padding-bottom: 0; /* optional */
 }
 
-/* ---- Pitch slide ---- */
 .pitch { max-width: min(1000px, 92vw); text-align: left;}
 .pitch h3 { margin: 0 0 .75rem; font-size: 1.6rem; text-align: center; }
 
@@ -605,7 +590,7 @@ tbody td.col-img {
   .pitch { max-width: 92vw; }
 }
 
-/* Pitch card hover/focus styles */
+
 .pitch-item{
   background: var(--surface);
   border: 1px solid var(--border);
@@ -617,13 +602,12 @@ tbody td.col-img {
 
 .pitch-item:hover,
 .pitch-item:focus-within{
-  background: #f5f8ff;          /* subtle tint on hover */
-  border-color: #c7d2fe;         /* soft accent border */
+  background: #f5f8ff;         
+  border-color: #c7d2fe;        
   box-shadow: 0 1px 0 rgba(0,0,0,.03),
               0 4px 12px rgba(15,98,254,.08);
 }
 
-/* Optional: nudge text color on hover for emphasis */
 .pitch-item:hover h4,
 .pitch-item:focus-within h4{
   color: var(--accent);
@@ -637,12 +621,10 @@ tbody td.col-img {
   color: var(--text);
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce){
   .pitch-item, .pitch-item *{ transition: none; }
 }
 
-/* --- Outro --- */
 .outro{
   text-align: center;
 }
@@ -699,5 +681,6 @@ tbody td.col-img {
 }
 
 .slide--pitch .slide__body{ padding-bottom:12vh; }
+
 
 
