@@ -1,63 +1,4 @@
-// --- DATA ---
-const WORK_ITEMS = [
-  {img: 'images/flying.png', rank: 1, title: `You are flying.' Inside the harrowing 100-mile police chase in Sangamon County`, desc: `Used open source intelligence and visual investigations technique to establish physical route and timeline of police chase and developed custom, interactive animation`, tech: `Google Maps, Leafly, HTML/JS`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/you-are-flying-inside-the-harrowing-100-mile-police-chase-in-sangamon-county/`},
-  {img: 'images/campfin.jpg', rank: 2, title: `By the numbers: Unions lead the way on funding state elections in Illinois`, desc: `Developed natural language pipeline to process hundreds of thousands of campaign finance records`, tech: `Adobe Illustrator, Python, pandas, SBERT, Google Sheets`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/by-the-numbers-unions-lead-the-way-on-funding-state-elections-in-illinois/`},
-  {img: 'images/voteviz.png', rank: 3, title: `Custom vote visualization`, desc: `Created a custom pipeline that takes PDF vote records and formates the data for a reusable custom visualization to display partisan votes records in the Illinois General Assembly`, tech: `HTML/JS, D3.js, Amazon Web Services`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/lawmakers-move-to-pause-then-further-regulate-carbon-dioxide-pipeline-development/`},
-  {img: 'images/assaultweapons.jpg', rank: 4, title: `What to know about Illinois’ assault weapons ban`, desc: `Designed, developed and implemented custom-developed interactive quiz based on new state law and created extensive illustration to strengthen explainer`, tech: `Adobe Illustrator, HTML/JS, Flourish`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/what-to-know-about-illinois-assault-weapons-ban/`},
-  {img: 'images/election.png', rank: 5, title: `CNI Election Guide`, desc: `Established contact with every election authority in Illinois to create, design and develop election guide for civics-oriented news platform`, tech: `Adobe Illustrator, Flourish`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/election-guide/`},
-  {img: 'images/madigan.png', rank: 6, title: `Madigan: The Rise and Fall`, desc: `Collabortaively reported details of powerful politician, developed fully custom interactive timeline`, tech: `Adobe Illustrator, HTML/JS`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/madigan-timeline/`},
-  {img: 'images/ctc.png', rank: 7, title: `Illinois child tax credit: who gets it, how much is it?`, desc: `Designed and developed custom interactive for child tax credit eligibility`, tech: `Adobe Illustrator, HTML/JS`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/illinois-child-tax-credit-who-gets-it-how-much-is-it/`},
-  {img: 'images/open.png', rank: 8, title: `Open Data Is Here. But What Data Do Governments Publish?`, desc: `Used API endpoints for popular open data platform to aggregate open data publications from hundreds of state and local governments to identify trends in government transparancey nationwide`, tech: `Python, pandas, Flourish`, collab: false, btnText: `See it live`, url: `https://www.govtech.com/biz/data/open-data-is-here-but-what-data-do-governments-publish`},
-  {img: 'images/workforce.png', rank: 9, title: `By the Numbers: The Government Technology Workforce`, desc: `Used federal data to identify trends and report on workforce trends for industry magazine`, tech: `Google Sheets, Flourish`, collab: false, btnText: `See it live`, url: `https://www.govtech.com/biz/data/by-the-numbers-the-government-technology-workforce`},
-  {img: 'images/cyber.png', rank: 10, title: `Threats, Costs and People: Cybersecurity by the Numbers`, desc: `Used custom-sourced survey data aloingside sources from around cybersecurity industry to create longform interactive inforgraphic and static magazine spread`, tech: `Google Sheets, Infogram`, collab: true, btnText: `See it live`, url: `https://www.govtech.com/biz/data/threats-costs-and-people-cybersecurity-by-the-numbers`},
-  /*{img: 'images/results.png', rank: 11, title: `The Results Are In: U.S. Moves Toward Paper-Based Elections`, desc: `Used national databases to identify trends in election machines as the backbone for a data-rich reported feature on election technology`, tech: `Python, pandas, Google Sheets, Flourish`, collab: false, btnText: `See it live`, url: `https://www.govtech.com/biz/data/the-results-are-in-u-s-moves-toward-paper-based-elections`},*/
-];
-
-// Visible tech filters (fixed)
-const VISIBLE_TECHS = ['HTML/JS','Python','Flourish','D3.js'];
-
-// Soft colors for tech pills
-const TECH_COLORS = {
-  'Python': { bg:'#eaf2ff', bd:'#d7e6ff', fg:'#1d4ed8' },
-  'D3.js': { bg:'#fff0f5', bd:'#ffd7e5', fg:'#be185d' },
-  'Flourish': { bg:'#ecfdf5', bd:'#d1fae5', fg:'#047857' },
-  'HTML/JS': { bg:'#fff7ed', bd:'#ffedd5', fg:'#9a3412' },
-  'Google Sheets': { bg:'#edf7ee', bd:'#d7f0da', fg:'#166534' },
-  'Adobe Illustrator': { bg:'#fee6ff', bd:'#f5c7ff', fg:'#81129a' },
-  'pandas': { bg:'#eef2ff', bd:'#e0e7ff', fg:'#3730a3' },
-  'SBERT': { bg:'#f1f5f9', bd:'#e2e8f0', fg:'#334155' },
-  'Amazon Web Services': { bg:'#ebffeb', bd:'#d3fec7', fg:'#0e9238' },
-  'Infogram': { bg:'#f0f9ff', bd:'#bae6fd', fg:'#075985' },
-  'Google Maps': { bg:'#ecfeff', bd:'#a5f3fc', fg:'#0e7490' },
-  'Leafly': { bg:'#fdf2f8', bd:'#fce7f3', fg:'#9d174d' },
-  _default: { bg:'#f3f4f6', bd:'#e5e7eb', fg:'#374151' }
-};
-
-// map common raw tokens -> canonical keys above
-const TECH_KEY = {
-  'python':'Python', 'd3.js':'D3.js', 'd3':'D3.js', 'd3js':'D3.js',
-  'html':'HTML/JS', 'js':'HTML/JS', 'javascript':'HTML/JS',
-  'google sheets':'Google Sheets', 'adobe illustrator':'Adobe Illustrator',
-  'pandas':'pandas', 'sbert':'SBERT', 'amazon web services':'Amazon Web Services',
-  'infogram':'Infogram', 'google maps':'Google Maps', 'leafly':'Leafly'
-};
-
-
-
-// Map each item's tech string to these categories
-function deriveTechCategories(techString){
-  const tokens = techString.split(',').map(t=>t.trim().toLowerCase());
-  const cats = new Set();
-  tokens.forEach(tok=>{
-    if(tok==='d3.js' || tok==='d3' || tok==='d3js') cats.add('D3.js');
-    if(tok==='python') cats.add('Python');
-    if(tok==='flourish') cats.add('Flourish');
-    if(tok==='html/js' || tok==='html' || tok==='js' || tok==='javascript') cats.add('HTML/JS');
-  });
-  return cats;
-}
-
-// --- SLIDES ---
+// page definitions
 const SLIDES = [
   /*{ id:'welcome', type:'text', title:'Welcome', html:`<p class="lead">Minimalist swipeable portfolio demo. Swipe or use arrows.</p>` },*/
   { id:'portrait', type:'portrait', title:'', image:'images/selfp.jpg', copy:`
@@ -236,7 +177,7 @@ const SLIDES = [
 
 ];
 
-// --- APP ---
+// core logic
 const app = document.getElementById('app');
 const track = document.getElementById('track');
 const btnPrev = document.getElementById('btnPrev');
@@ -287,7 +228,56 @@ function render(){
   });
 }
 
-// --- Hash helpers (kept for table filter sync) ---
+
+// table stuff
+const WORK_ITEMS = [
+  {img: 'images/flying.png', rank: 1, title: `You are flying.' Inside the harrowing 100-mile police chase in Sangamon County`, desc: `Used open source intelligence and visual investigations technique to establish physical route and timeline of police chase and developed custom, interactive animation`, tech: `Google Maps, Leafly, HTML/JS`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/you-are-flying-inside-the-harrowing-100-mile-police-chase-in-sangamon-county/`},
+  {img: 'images/campfin.jpg', rank: 2, title: `By the numbers: Unions lead the way on funding state elections in Illinois`, desc: `Developed natural language pipeline to process hundreds of thousands of campaign finance records`, tech: `Adobe Illustrator, Python, pandas, SBERT, Google Sheets`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/by-the-numbers-unions-lead-the-way-on-funding-state-elections-in-illinois/`},
+  {img: 'images/voteviz.png', rank: 3, title: `Custom vote visualization`, desc: `Created a custom pipeline that takes PDF vote records and formates the data for a reusable custom visualization to display partisan votes records in the Illinois General Assembly`, tech: `HTML/JS, D3.js, Amazon Web Services`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/lawmakers-move-to-pause-then-further-regulate-carbon-dioxide-pipeline-development/`},
+  {img: 'images/assaultweapons.jpg', rank: 4, title: `What to know about Illinois’ assault weapons ban`, desc: `Designed, developed and implemented custom-developed interactive quiz based on new state law and created extensive illustration to strengthen explainer`, tech: `Adobe Illustrator, HTML/JS, Flourish`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/what-to-know-about-illinois-assault-weapons-ban/`},
+  {img: 'images/election.png', rank: 5, title: `CNI Election Guide`, desc: `Established contact with every election authority in Illinois to create, design and develop election guide for civics-oriented news platform`, tech: `Adobe Illustrator, Flourish`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/election-guide/`},
+  {img: 'images/madigan.png', rank: 6, title: `Madigan: The Rise and Fall`, desc: `Collabortaively reported details of powerful politician, developed fully custom interactive timeline`, tech: `Adobe Illustrator, HTML/JS`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/madigan-timeline/`},
+  {img: 'images/ctc.png', rank: 7, title: `Illinois child tax credit: who gets it, how much is it?`, desc: `Designed and developed custom interactive for child tax credit eligibility`, tech: `Adobe Illustrator, HTML/JS`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/illinois-child-tax-credit-who-gets-it-how-much-is-it/`},
+  {img: 'images/open.png', rank: 8, title: `Open Data Is Here. But What Data Do Governments Publish?`, desc: `Used API endpoints for popular open data platform to aggregate open data publications from hundreds of state and local governments to identify trends in government transparancey nationwide`, tech: `Python, pandas, Flourish`, collab: false, btnText: `See it live`, url: `https://www.govtech.com/biz/data/open-data-is-here-but-what-data-do-governments-publish`},
+  {img: 'images/workforce.png', rank: 9, title: `By the Numbers: The Government Technology Workforce`, desc: `Used federal data to identify trends and report on workforce trends for industry magazine`, tech: `Google Sheets, Flourish`, collab: false, btnText: `See it live`, url: `https://www.govtech.com/biz/data/by-the-numbers-the-government-technology-workforce`},
+  {img: 'images/cyber.png', rank: 10, title: `Threats, Costs and People: Cybersecurity by the Numbers`, desc: `Used custom-sourced survey data aloingside sources from around cybersecurity industry to create longform interactive inforgraphic and static magazine spread`, tech: `Google Sheets, Infogram`, collab: true, btnText: `See it live`, url: `https://www.govtech.com/biz/data/threats-costs-and-people-cybersecurity-by-the-numbers`},
+  /*{img: 'images/results.png', rank: 11, title: `The Results Are In: U.S. Moves Toward Paper-Based Elections`, desc: `Used national databases to identify trends in election machines as the backbone for a data-rich reported feature on election technology`, tech: `Python, pandas, Google Sheets, Flourish`, collab: false, btnText: `See it live`, url: `https://www.govtech.com/biz/data/the-results-are-in-u-s-moves-toward-paper-based-elections`},*/
+];
+const VISIBLE_TECHS = ['HTML/JS','Python','Flourish','D3.js'];
+const TECH_COLORS = {
+  'Python': { bg:'#eaf2ff', bd:'#d7e6ff', fg:'#1d4ed8' },
+  'D3.js': { bg:'#fff0f5', bd:'#ffd7e5', fg:'#be185d' },
+  'Flourish': { bg:'#ecfdf5', bd:'#d1fae5', fg:'#047857' },
+  'HTML/JS': { bg:'#fff7ed', bd:'#ffedd5', fg:'#9a3412' },
+  'Google Sheets': { bg:'#edf7ee', bd:'#d7f0da', fg:'#166534' },
+  'Adobe Illustrator': { bg:'#fee6ff', bd:'#f5c7ff', fg:'#81129a' },
+  'pandas': { bg:'#eef2ff', bd:'#e0e7ff', fg:'#3730a3' },
+  'SBERT': { bg:'#f1f5f9', bd:'#e2e8f0', fg:'#334155' },
+  'Amazon Web Services': { bg:'#ebffeb', bd:'#d3fec7', fg:'#0e9238' },
+  'Infogram': { bg:'#f0f9ff', bd:'#bae6fd', fg:'#075985' },
+  'Google Maps': { bg:'#ecfeff', bd:'#a5f3fc', fg:'#0e7490' },
+  'Leafly': { bg:'#fdf2f8', bd:'#fce7f3', fg:'#9d174d' },
+  _default: { bg:'#f3f4f6', bd:'#e5e7eb', fg:'#374151' }
+};
+const TECH_KEY = {
+  'python':'Python', 'd3.js':'D3.js', 'd3':'D3.js', 'd3js':'D3.js',
+  'html':'HTML/JS', 'js':'HTML/JS', 'javascript':'HTML/JS',
+  'google sheets':'Google Sheets', 'adobe illustrator':'Adobe Illustrator',
+  'pandas':'pandas', 'sbert':'SBERT', 'amazon web services':'Amazon Web Services',
+  'infogram':'Infogram', 'google maps':'Google Maps', 'leafly':'Leafly'
+};
+function deriveTechCategories(techString){
+  const tokens = techString.split(',').map(t=>t.trim().toLowerCase());
+  const cats = new Set();
+  tokens.forEach(tok=>{
+    if(tok==='d3.js' || tok==='d3' || tok==='d3js') cats.add('D3.js');
+    if(tok==='python') cats.add('Python');
+    if(tok==='flourish') cats.add('Flourish');
+    if(tok==='html/js' || tok==='html' || tok==='js' || tok==='javascript') cats.add('HTML/JS');
+  });
+  return cats;
+}
+
 function parseHash(){
   const m = location.hash.match(/^#\/([^?]+)(?:\?(.*))?$/);
   const out = { id: m? decodeURIComponent(m[1]) : '', params: {} };
@@ -300,7 +290,7 @@ function setHash(id, params){
   if(location.hash !== newHash) history.replaceState(null,'', newHash);
 }
 
-// --- Portrait UI ---
+// welcome page/portrait page stuff
 function buildPortrait(s){
   const hero = document.createElement('div'); hero.className = 'hero';
   hero.style.backgroundImage = `url('${s.image}')`;
@@ -551,7 +541,7 @@ function buildTableUI(){
   return wrap;
 }
 
-// --- Navigation ---
+// nav
 function goTo(i){
   i=Math.max(0,Math.min(SLIDES.length-1,i));
   index=i;
@@ -569,7 +559,6 @@ function goTo(i){
   if (current === 'demo-2') ensureDemo2Chart();
 }
 
-// Swipe/drag navigation
 let drag = null; const DRAG_THRESHOLD = 60; const VELOCITY_MIN = 0.5;
 function onPointerDown(e){
   if(e.button !== undefined && e.button !== 0) return;
@@ -598,6 +587,7 @@ function onPointerUp(e){
   drag = null;
 }
 
+// demo 2 stuff
 let demo2Drawn = false;
 function ensureDemo2Chart(){
   if (demo2Drawn) return;
@@ -610,8 +600,7 @@ function ensureDemo2Chart(){
 async function drawDemo2(root){
   const CSV_URL = 'data.csv';
   const raw = await d3.csv(CSV_URL);
-  
-  // "Last, First" -> "First Last"
+
   const toFirstLast = (s) => {
     if (!s) return 'Member';
     const parts = s.split(',').map(t => t.trim());
@@ -627,7 +616,6 @@ async function drawDemo2(root){
   }))
   .filter(d => Number.isFinite(d.x) && d.party && d.year);
 
-  // ---- setup ----
   root.innerHTML = '';
   const tooltip = document.createElement('div');
   tooltip.className = 'demo2-tooltip';
@@ -653,14 +641,14 @@ async function drawDemo2(root){
     const innerH = Math.max(0, H - margin.top - margin.bottom);
     const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // X scale (numeric)
+    // X 
     const xExtent = d3.extent(data, d => d.x);
     const xPad = 0.2;
     const x = d3.scaleLinear()
       .domain([ (xExtent[0] ?? -2) - xPad, (xExtent[1] ?? 2) + xPad ])
       .range([0, innerW]);
 
-    // Y scale (categorical). If labels contain numbers (e.g., "99th"), sort numerically.
+    // Y 
     const yDomain = Array.from(new Set(data.map(d => d.yLabel))).sort((a,b)=>{
       const na = +((a.match(/\d+/)||[])[0] ?? NaN);
       const nb = +((b.match(/\d+/)||[])[0] ?? NaN);
@@ -673,7 +661,6 @@ async function drawDemo2(root){
       .range([innerH, 0])
       .paddingInner(0.25);
 
-    // grid (vertical)
     g.append('g')
       .attr('stroke', '#e5e7eb')
       .selectAll('line')
@@ -684,7 +671,6 @@ async function drawDemo2(root){
       .attr('y1', 0)
       .attr('y2', innerH);
 
-    // axes
     g.append('g')
       .attr('transform', `translate(0,${innerH})`)
       .call(d3.axisBottom(x).ticks(W < 520 ? 4 : 6))
@@ -694,25 +680,22 @@ async function drawDemo2(root){
       .call(d3.axisLeft(y).tickSize(0))
       .call(g => g.select('.domain').remove());
 
-    // ---- axis titles ----
     g.append('text')
       .attr('class', 'axis-title')
       .attr('text-anchor', 'middle')
       .attr('x', innerW / 2)
-      .attr('y', innerH + 42)                 // sits below the x-axis
+      .attr('y', innerH + 42) 
       .text('← more liberal | more conservative → ');
 
     g.append('text')
       .attr('class', 'axis-title y')
       .attr('transform', 'rotate(-90)')
       .attr('x', -innerH / 2)
-      .attr('y', -(margin.left -20))   // push left of tick labels
+      .attr('y', -(margin.left -20))   
       .attr('text-anchor', 'middle')
       .text('Session (years)');
 
 
-
-    // legend
     const legend = svg.append('g')
       .attr('class','demo2-legend')
       .attr('transform', `translate(${margin.left},${margin.top - 14})`);
@@ -723,7 +706,6 @@ async function drawDemo2(root){
       item.append('text').attr('x',10).attr('y',4).text(label);
     });
 
-    // points (with slight vertical jitter so overlaps are visible)
     const jitter = d3.randomUniform(-3, 3);
     g.append('g')
       .selectAll('circle')
@@ -761,18 +743,15 @@ async function drawDemo2(root){
   render();
 }
 
-// Put this near your other helpers
 function setSlideOrder(idsInOrder) {
   const byId = Object.fromEntries(SLIDES.map(s => [s.id, s]));
   const reordered = idsInOrder.map(id => byId[id]).filter(Boolean);
   const remaining = SLIDES.filter(s => !idsInOrder.includes(s.id));
 
-  // mutate SLIDES in place (allowed even though it's a const binding)
   const currentId = SLIDES[index]?.id;
   SLIDES.length = 0;
   SLIDES.push(...reordered, ...remaining);
 
-  // re-render and keep you on the same slide if it still exists
   render();
   const i = SLIDES.findIndex(s => s.id === currentId);
   goTo(i >= 0 ? i : 0);
@@ -790,7 +769,7 @@ setSlideOrder([
   'outro'
 ]);
 
-// Init
+// let's go 
 function init(){
   render();
   btnPrev.addEventListener('click',()=>goTo(index-1));
@@ -800,8 +779,7 @@ function init(){
   app.addEventListener('pointermove', onPointerMove, {passive: true});
   app.addEventListener('pointerup', onPointerUp);
   window.addEventListener('resize', ()=> goTo(index));
-
-  // Always start at Welcome
+  
   setHash('portrait', {});
   goTo(0);
 }
@@ -814,5 +792,6 @@ window.addEventListener('hashchange', ()=>{
 });
 
 init();
+
 
 
