@@ -229,7 +229,7 @@ function render(){
 
 // table stuff
 const WORK_ITEMS = [
-  {img: 'images/flying.png', rank: 1, title: `You are flying.' Inside the harrowing 100-mile police chase in Sangamon County`, desc: `Used open source intelligence and visual investigations technique to establish physical route and timeline of police chase and developed custom, interactive animation`, tech: `Google Maps, Leafly, HTML/JS`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/you-are-flying-inside-the-harrowing-100-mile-police-chase-in-sangamon-county/`},
+  {img: 'images/flying.png', rank: 1, title: `'You are flying.' Inside the harrowing 100-mile police chase in Sangamon County`, desc: `Used open source intelligence and visual investigations technique to establish physical route and timeline of police chase and developed custom, interactive animation`, tech: `Google Maps, Leafly, HTML/JS`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/you-are-flying-inside-the-harrowing-100-mile-police-chase-in-sangamon-county/`},
   {img: 'images/campfin.jpg', rank: 2, title: `By the numbers: Unions lead the way on funding state elections in Illinois`, desc: `Developed natural language pipeline to process hundreds of thousands of campaign finance records`, tech: `Adobe Illustrator, Python, pandas, SBERT, Google Sheets`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/by-the-numbers-unions-lead-the-way-on-funding-state-elections-in-illinois/`},
   {img: 'images/voteviz.png', rank: 3, title: `Custom vote visualization`, desc: `Created a custom pipeline that takes PDF vote records and formates the data for a reusable custom visualization to display partisan votes records in the Illinois General Assembly`, tech: `HTML/JS, D3.js, Amazon Web Services`, collab: true, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/lawmakers-move-to-pause-then-further-regulate-carbon-dioxide-pipeline-development/`},
   {img: 'images/assaultweapons.jpg', rank: 4, title: `What to know about Illinois’ assault weapons ban`, desc: `Designed, developed and implemented custom-developed interactive quiz based on new state law and created extensive illustration to strengthen explainer`, tech: `Adobe Illustrator, HTML/JS, Flourish`, collab: false, btnText: `See it live`, url: `https://capitolnewsillinois.com/news/what-to-know-about-illinois-assault-weapons-ban/`},
@@ -790,6 +790,7 @@ window.addEventListener('hashchange', ()=>{
 });
 
 init();
+
 
 
 
